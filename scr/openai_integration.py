@@ -12,10 +12,10 @@ def generate_tags(description):
     try:
         print("Generating tags for:", description)  # Debug print
 
-        # Preparing the message for the OpenAI API
+# Preparing the message for the OpenAI API
         messages = [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": f"Based on the description '{description}', provide a single-word tag. The tag should be a relevant keyword, typical for categories like shopping, grocery, travel, etc., without any additional symbols."}
+            {"role": "system", "content": "You are a smart assistant capable of understanding shopping contexts and categorizing them into specific tags."},
+            {"role": "user", "content": f"Analyze the following description and categorize it into a specific tag. The tag should be a single, relevant keyword. Consider brand names like 'Tesco' or 'Lidl' as indicative of the 'grocery' category. Factor in the context of the description, which may include details about costs or shopping items. Avoid any additional symbols or text. Description: '{description}'"}
         ]
 
         # Making the API call

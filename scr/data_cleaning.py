@@ -19,7 +19,7 @@ def clean_data(row):
         cleaned_row.append(item)
     
     # Generate tags using OpenAI API (assuming description is in the first column)
-    tag = generate_tags(cleaned_row[0])
+    tag = generate_tags(cleaned_row[2:4])
     cleaned_row.append(tag)
 
     return cleaned_row
