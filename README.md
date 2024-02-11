@@ -1,9 +1,16 @@
-# transaction-tagging
+# Transaction-tagging
 Automating transaction tagging
+Python program 
 
 To do: 
-- OpenIA 
-- Send csv file through Telegram bot
-- docker ? 
-- Google API 
-- Adjust tagging 
+
+- [x] OpenIA 
+- [ ] Google API 
+- [ ] app 
+
+### Doc 
+Makefile 
+
+```shell 
+$ make run 
+```

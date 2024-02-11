@@ -14,9 +14,32 @@ def generate_tags(description):
 
 # Preparing the message for the OpenAI API
         messages = [
-            {"role": "system", "content": "You are a smart assistant capable of understanding shopping contexts and categorizing them into specific tags."},
-            {"role": "user", "content": f"Analyze the following description and categorize it into a specific tag. The tag should be a single, relevant keyword. Consider brand names like 'Tesco' or 'Lidl' as indicative of the 'grocery' category. Factor in the context of the description, which may include details about costs or shopping items. Avoid any additional symbols or text. Description: '{description}'"}
-        ]
+    {
+        "role": "system", 
+        "content": """
+            As a highly intelligent assistant, your task is to analyze detailed shopping descriptions and categorize them into specific, 
+            relevant tags using only single keywords. Follow these guidelines to ensure a wide range of tags:
+            - Identify the main item or service being described and use that as the basis for the tag. For example, 
+            if the description is about purchasing a book, the tag should be 'Books'.
+            - For grocery items or purchases from known supermarkets, consider the primary 
+            type of item (e.g., 'Fruits', 'Vegetables', 'Beverages').
+            - For online purchases, try to determine the type of product or service rather than 
+            just tagging everything as 'Online'. For instance, 'Electronics' for gadgets, 'Apparel' for clothing bought online, etc.
+            - When a brand is mentioned, use the product category associated with that brand. 
+            For example, 'Adidas' or 'Nike' should lead to 'Sportswear', not just 'Clothes'.
+            - Use specific tags for services (e.g., 'Streaming' for Netflix, 'Delivery' for UberEats).
+            - If the description involves a payment for a utility or service, 
+            categorize it by the type of service (e.g., 'Electricity', 'Internet').
+            Your response should be a single, specific, and relevant keyword that best categorizes each shopping description. 
+            Avoid general tags unless absolutely necessary, and do not include any additional symbols or text.
+        """
+    },
+    {
+        "role": "user", 
+        "content": f"Analyze the following shopping description and suggest the most appropriate, specific tag: '{description}'"
+    }
+]
+
 
         # Making the API call
         response = client.chat.completions.create(
