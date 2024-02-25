@@ -1,2 +1,0 @@
-from saparete import Saparete
-
